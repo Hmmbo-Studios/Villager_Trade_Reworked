@@ -1,0 +1,9 @@
+name: CustomVillagerTrades
+version: '${version}'
+main: com.example.customvillagertrades.CustomVillagerTrades
+api-version: '1.19'
+commands:
+  villagertrade:
+    description: Open villager trade configuration menu
+    usage: /<command>
+    permission: customvillagertrades.admin

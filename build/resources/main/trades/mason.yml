@@ -1,0 +1,118 @@
+profession: MASON
+trades:
+  1: # Novice (Randomly selects 2-3)
+    - ingredients:
+        1:
+          type: CLAY_BALL
+          amount: 10
+      result:
+        type: EMERALD
+      max-use: 16
+      villagerxp: 2
+      playerxp: true
+      price-multiplier: 0.05
+
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 1
+      result:
+        type: BRICK
+        amount: 10
+      max-use: 12
+      villagerxp: 3
+      playerxp: true
+      price-multiplier: 0.05
+
+  2: # Apprentice (Randomly selects 2-3)
+    - ingredients:
+        1:
+          type: STONE
+          amount: 20
+      result:
+        type: EMERALD
+      max-use: 12
+      villagerxp: 5
+      playerxp: true
+      price-multiplier: 0.08
+
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 1
+      result:
+        type: CHISELED_STONE_BRICKS
+      max-use: 12
+      villagerxp: 5
+      playerxp: true
+      price-multiplier: 0.1
+
+  3: # Journeyman (Randomly selects 2-3)
+    - ingredients:
+        1:
+          type: GRANITE
+          amount: 16
+      result:
+        type: EMERALD
+      max-use: 12
+      villagerxp: 7
+      playerxp: true
+      price-multiplier: 0.1
+
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 1
+      result:
+        type: POLISHED_ANDESITE
+        amount: 4
+      max-use: 12
+      villagerxp: 7
+      playerxp: true
+      price-multiplier: 0.12
+
+  4: # Expert (Randomly selects 2-3)
+    - ingredients:
+        1:
+          type: QUARTZ_BLOCK
+          amount: 12
+      result:
+        type: EMERALD
+      max-use: 6
+      villagerxp: 10
+      playerxp: true
+      price-multiplier: 0.15
+
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 1
+      result:
+        type: TERRACOTTA
+      max-use: 6
+      villagerxp: 12
+      playerxp: true
+      price-multiplier: 0.15
+
+  5: # Master (Randomly selects 2)
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 1
+      result:
+        type: BLACK_GLAZED_TERRACOTTA
+      max-use: 2
+      villagerxp: 20
+      playerxp: true
+      price-multiplier: 0.3
+
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 1
+      result:
+        type: BLUE_GLAZED_TERRACOTTA
+      max-use: 2
+      villagerxp: 20
+      playerxp: true
+      price-multiplier: 0.3

@@ -1,0 +1,21 @@
+custom_items:
+  enchanted_diamond_sword:
+    material: DIAMOND_SWORD
+    name: "§b§lFrost Blade"
+    lore:
+      - "§7A legendary sword infused"
+      - "§7with ancient frost magic"
+    enchantments:
+      DAMAGE_ALL: 5
+      FROST_WALKER: 2
+      DURABILITY: 3
+  master_bow:
+    material: BOW
+    name: "§6§lPhoenix Bow"
+    lore:
+      - "§7A bow blessed by the"
+      - "§7ancient fire spirits"
+    enchantments:
+      ARROW_DAMAGE: 5
+      ARROW_FIRE: 1
+      DURABILITY: 3

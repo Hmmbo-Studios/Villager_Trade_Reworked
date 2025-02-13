@@ -1,0 +1,119 @@
+profession: SHEPHERD
+trades:
+  1: 
+    - ingredients:
+        1:
+          type: WHITE_WOOL
+          amount: 18
+      result:
+        type: EMERALD
+      max-use: 16
+      villagerxp: 2
+      playerxp: true
+      price-multiplier: 0.05
+
+    - ingredients:
+        1:
+          type: BROWN_WOOL
+          amount: 18
+      result:
+        type: EMERALD
+      max-use: 16
+      villagerxp: 2
+      playerxp: true
+      price-multiplier: 0.05
+
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 2
+      result:
+        type: SHEARS
+      max-use: 12
+      villagerxp: 3
+      playerxp: true
+      price-multiplier: 0.05
+
+  2: 
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 1
+      result:
+        type: WHITE_CARPET
+        amount: 4
+      max-use: 12
+      villagerxp: 5
+      playerxp: true
+      price-multiplier: 0.08
+
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 1
+      result:
+        type: BLACK_CARPET
+        amount: 4
+      max-use: 12
+      villagerxp: 5
+      playerxp: true
+      price-multiplier: 0.08
+
+  3: 
+    - ingredients:
+        1:
+          type: DYE
+          amount: 12
+      result:
+        type: EMERALD
+      max-use: 12
+      villagerxp: 7
+      playerxp: true
+      price-multiplier: 0.1
+
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 3
+      result:
+        type: PAINTING
+      max-use: 6
+      villagerxp: 8
+      playerxp: true
+      price-multiplier: 0.12
+
+  4: 
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 5
+      result:
+        type: WHITE_BED
+      max-use: 6
+      villagerxp: 10
+      playerxp: true
+      price-multiplier: 0.15
+
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 5
+      result:
+        type: RED_BED
+      max-use: 6
+      villagerxp: 10
+      playerxp: true
+      price-multiplier: 0.15
+
+  5: 
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 8
+      result:
+        type: BANNER_PATTERN
+        name: "Globe"
+      max-use: 2
+      villagerxp: 20
+      playerxp: true
+      price-multiplier: 0.3

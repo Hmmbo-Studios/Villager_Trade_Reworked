@@ -1,0 +1,121 @@
+profession: FLETCHER
+trades:
+  1: 
+    - ingredients:
+        1:
+          type: STICK
+          amount: 32
+      result:
+        type: EMERALD
+      max-use: 16
+      villagerxp: 2
+      playerxp: true
+      price-multiplier: 0.05
+
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 1
+      result:
+        type: FLINT
+      max-use: 12
+      villagerxp: 3
+      playerxp: true
+      price-multiplier: 0.05
+
+  2: 
+    - ingredients:
+        1:
+          type: FLINT
+          amount: 26
+      result:
+        type: EMERALD
+      max-use: 12
+      villagerxp: 5
+      playerxp: true
+      price-multiplier: 0.08
+
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 2
+      result:
+        type: ARROW
+        amount: 16
+      max-use: 12
+      villagerxp: 5
+      playerxp: true
+      price-multiplier: 0.1
+
+  3: 
+    - ingredients:
+        1:
+          type: STRING
+          amount: 14
+      result:
+        type: EMERALD
+      max-use: 12
+      villagerxp: 7
+      playerxp: true
+      price-multiplier: 0.1
+
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 7
+      result:
+        type: BOW
+      max-use: 6
+      villagerxp: 10
+      playerxp: true
+      price-multiplier: 0.12
+
+  4: 
+    - ingredients:
+        1:
+          type: FEATHER
+          amount: 24
+      result:
+        type: EMERALD
+      max-use: 6
+      villagerxp: 12
+      playerxp: true
+      price-multiplier: 0.15
+
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 14
+      result:
+        type: CROSSBOW
+      max-use: 6
+      villagerxp: 12
+      playerxp: true
+      price-multiplier: 0.15
+
+  5: 
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 17
+      result:
+        type: ENCHANTED_BOW
+        enchants:
+          POWER: 2
+      max-use: 2
+      villagerxp: 20
+      playerxp: true
+      price-multiplier: 0.3
+
+    - ingredients:
+        1:
+          type: EMERALD
+          amount: 19
+      result:
+        type: ENCHANTED_CROSSBOW
+        enchants:
+          QUICK_CHARGE: 2
+      max-use: 2
+      villagerxp: 20
+      playerxp: true
+      price-multiplier: 0.3
