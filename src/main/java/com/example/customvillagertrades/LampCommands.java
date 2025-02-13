@@ -89,7 +89,7 @@ public class LampCommands {
         } else {
             try {
                 Material material = Material.valueOf(item.toUpperCase());
-                return new ItemStack(material, 1); // Default amount is 1
+                return new ItemStack(material, 1); 
             } catch (IllegalArgumentException e) {
                 return null;
             }

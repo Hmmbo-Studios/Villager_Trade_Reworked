@@ -23,9 +23,9 @@ public class TradeMenu {
     }
 
     private void initializeItems() {
-        // Add villager profession items
+        
         for (Profession profession : Profession.values()) {
-            if (profession != Profession.NONE) { // Skip NONE profession
+            if (profession != Profession.NONE) { 
                 ItemStack item = createProfessionItem(profession);
                 inventory.addItem(item);
             }

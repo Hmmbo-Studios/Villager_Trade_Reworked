@@ -29,14 +29,14 @@ public class MenuListener implements Listener {
             
             if (clickedItem.hasItemMeta() && clickedItem.getItemMeta().hasDisplayName()) {
                 String displayName = clickedItem.getItemMeta().getDisplayName();
-                String professionName = displayName.substring(2); // Remove color code
+                String professionName = displayName.substring(2); 
                 
-                // Handle profession selection
+                
                 try {
                     org.bukkit.entity.Villager.Profession profession = 
                         org.bukkit.entity.Villager.Profession.valueOf(professionName);
                     
-                    // Open trade configuration for this profession
+                    
                     openTradeConfiguration(player, profession);
                 } catch (IllegalArgumentException e) {
                     player.sendMessage("§cInvalid profession selected!");
@@ -46,7 +46,7 @@ public class MenuListener implements Listener {
     }
     
     private void openTradeConfiguration(Player player, org.bukkit.entity.Villager.Profession profession) {
-        // TODO: Implement trade configuration menu for specific profession
+        
         player.sendMessage("§aOpening trade configuration for " + profession.name());
     }
 }

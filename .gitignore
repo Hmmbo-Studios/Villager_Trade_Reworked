@@ -1,0 +1,45 @@
+# Compiled class files
+*.class
+*.jar
+*.war
+*.ear
+
+# Build directories
+/build/
+out/
+bin/
+
+# Gradle files
+.gradle/
+.gradle-cache/
+!gradle/wrapper/gradle-wrapper.jar
+.bolt
+
+# Generated files
+/build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE-specific files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code settings
+.vscode/
+
+# Logs & temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+*.swn
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Java-specific
+*.log
+hs_err_pid*

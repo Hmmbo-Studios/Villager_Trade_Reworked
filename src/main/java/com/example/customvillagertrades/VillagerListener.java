@@ -28,7 +28,7 @@ public class VillagerListener implements Listener {
         Villager villager = (Villager) event.getEntity();
 
         if (plugin.getConfig().getBoolean("Enabled", true)) {
-            event.setCancelled(true); // Prevent default trades
+            event.setCancelled(true); 
             setCustomTrades(villager);
         }
     }
@@ -37,7 +37,7 @@ public class VillagerListener implements Listener {
     public void onVillagerSpawn(CreatureSpawnEvent event) {
         if (event.getEntityType() == EntityType.VILLAGER) {
             Villager villager = (Villager) event.getEntity();
-           // setCustomTrades(villager);
+           
         }
     }
 
@@ -55,7 +55,7 @@ public class VillagerListener implements Listener {
     private void setCustomTrades(Villager villager) {
         String professionName = villager.getProfession().name().toLowerCase();
 
-        // Skip if nitwit or no profession
+        
         if (villager.getProfession() == Villager.Profession.NITWIT ||
                 villager.getProfession() == Villager.Profession.NONE) {
             return;
@@ -74,12 +74,12 @@ public class VillagerListener implements Listener {
         List<MerchantRecipe> selectedTrades = new ArrayList<>();
         Set<String> seenTrades = new HashSet<>();
 
-        Collections.shuffle(availableTrades); // Shuffle to randomize
+        Collections.shuffle(availableTrades); 
 
         for (MerchantRecipe recipe : availableTrades) {
             StringBuilder tradeKey = new StringBuilder();
 
-            // Include all ingredients in uniqueness check
+            
             for (ItemStack ingredient : recipe.getIngredients()) {
                 tradeKey.append(ingredient.getType().toString());
                 if (ingredient.hasItemMeta() && ingredient.getItemMeta().hasDisplayName()) {
@@ -88,19 +88,19 @@ public class VillagerListener implements Listener {
                 tradeKey.append(";");
             }
 
-            // Include result in uniqueness check
+            
             tradeKey.append("=>").append(recipe.getResult().getType().toString());
             if (recipe.getResult().hasItemMeta() && recipe.getResult().getItemMeta().hasDisplayName()) {
                 tradeKey.append("|").append(recipe.getResult().getItemMeta().getDisplayName());
             }
 
-            // Ensure uniqueness
+            
             if (!seenTrades.contains(tradeKey.toString())) {
                 seenTrades.add(tradeKey.toString());
                 selectedTrades.add(recipe);
             }
 
-            if (selectedTrades.size() >= amount) break; // Ensure exactly 'amount' trades are selected
+            if (selectedTrades.size() >= amount) break; 
         }
 
         return selectedTrades;

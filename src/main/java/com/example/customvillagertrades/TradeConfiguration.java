@@ -66,7 +66,7 @@ public class TradeConfiguration {
             }
         }
 
-        // Ensure exactly 2 unique trades
+        
         return selectRandomTrades(possibleTrades, 2);
     }
 
@@ -79,7 +79,7 @@ public class TradeConfiguration {
         for (MerchantRecipe recipe : availableTrades) {
             StringBuilder key = new StringBuilder();
 
-            // Include all ingredients in the uniqueness check
+            
             for (ItemStack ingredient : recipe.getIngredients()) {
                 key.append(ingredient.getType().toString());
                 if (ingredient.hasItemMeta() && ingredient.getItemMeta().hasDisplayName()) {
@@ -87,13 +87,13 @@ public class TradeConfiguration {
                 }
             }
 
-            // Include result in the uniqueness check
+            
             key.append("=>").append(recipe.getResult().getType().toString());
             if (recipe.getResult().hasItemMeta() && recipe.getResult().getItemMeta().hasDisplayName()) {
                 key.append("|").append(recipe.getResult().getItemMeta().getDisplayName());
             }
 
-            // Ensure uniqueness
+            
             if (!seenTrades.contains(key.toString())) {
                 seenTrades.add(key.toString());
                 selectedTrades.add(recipe);
@@ -122,7 +122,7 @@ public class TradeConfiguration {
             Map<?, ?> ingredientsMap = (Map<?, ?>) tradeMap.get("ingredients");
             for (Object key : ingredientsMap.keySet()) {
                 Map<?, ?> ingredientData = (Map<?, ?>) ingredientsMap.get(key);
-                ItemStack ingredientItem = parseItem(ingredientData); // ✅ Now applies custom display names/lore to ingredients
+                ItemStack ingredientItem = parseItem(ingredientData); 
                 recipe.addIngredient(ingredientItem);
             }
 
@@ -138,12 +138,12 @@ public class TradeConfiguration {
         int amount = itemData.containsKey("amount") ? (int) itemData.get("amount") : 1;
         ItemStack item = new ItemStack(material, amount);
 
-        // Get Display Name
+        
         String displayName = itemData.containsKey("display-name")
                 ? itemData.get("display-name").toString().replace("&", "§")
                 : null;
 
-        // Get Lore and replace '&' with '§' for each line
+        
         List<String> lore = new ArrayList<>();
         if (itemData.containsKey("lore")) {
             for (String line : (List<String>) itemData.get("lore")) {
@@ -152,7 +152,7 @@ public class TradeConfiguration {
         }
 
         if (material == Material.ENCHANTED_BOOK) {
-            // Handle enchanted book
+            
             EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item.getItemMeta();
             if (meta != null) {
                 applyEnchantments(meta, itemData);
@@ -161,7 +161,7 @@ public class TradeConfiguration {
                 item.setItemMeta(meta);
             }
         } else {
-            // Handle normal items
+            
             ItemMeta meta = item.getItemMeta();
             if (meta != null) {
                 applyEnchantments(meta, itemData);

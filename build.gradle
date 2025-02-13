@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '8.1.1' // Shadow Plugin
+    id 'com.github.johnrengelman.shadow' version '8.1.1' 
 }
 
 group = 'com.example'
@@ -21,12 +21,12 @@ repositories {
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT'
 
-    // Lamp dependencies
+    
     implementation 'io.github.revxrsal:lamp.common:4.0.0-rc.8'
     implementation 'io.github.revxrsal:lamp.bukkit:4.0.0-rc.8'
 }
 
-// Java version settings
+
 def targetJavaVersion = 17
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
@@ -41,7 +41,7 @@ tasks.withType(JavaCompile).configureEach {
     }
 }
 
-// Process plugin.yml and replace variables
+
 processResources {
     def props = [version: version]
     inputs.properties props
@@ -51,12 +51,12 @@ processResources {
     }
 }
 
-// ✅ Properly bundle dependencies in the final JAR
+
 shadowJar {
-    archiveClassifier.set('') // Remove "-all" from the JAR name
-    relocate 'revxrsal', 'com.example.libraries.revxrsal' // Avoid class conflicts
-    minimize() // Reduce unnecessary dependencies
+    archiveClassifier.set('') 
+    relocate 'revxrsal', 'com.example.libraries.revxrsal' 
+    minimize() 
 }
 
-// Make 'shadowJar' the default build task
+
 build.dependsOn shadowJar

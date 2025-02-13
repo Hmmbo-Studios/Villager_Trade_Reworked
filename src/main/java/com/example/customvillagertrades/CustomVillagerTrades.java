@@ -24,11 +24,11 @@ public class CustomVillagerTrades extends JavaPlugin {
         lamp.register(new LampCommands(tradeManager,tradeConfig));
 
 
-        // Register events
+        
         getServer().getPluginManager().registerEvents(new VillagerListener(this,tradeConfig), this);
         getServer().getPluginManager().registerEvents(new MenuListener(this), this);
         
-        // Register commands
+        
         getCommand("vt").setExecutor(new TradeCommand(this));
     }
 

@@ -63,13 +63,13 @@ public class TradeManager {
             ConfigurationSection tradeSection = tradesSection.getConfigurationSection(key);
             
             try {
-                // Parse result
+                
                 String[] resultParts = tradeSection.getString("result").split(":");
                 Material resultMaterial = Material.valueOf(resultParts[0].toUpperCase());
                 int resultAmount = Integer.parseInt(resultParts[1]);
                 ItemStack result = new ItemStack(resultMaterial, resultAmount);
 
-                // Handle enchanted books and custom items
+                
                 if (resultMaterial == Material.ENCHANTED_BOOK) {
                     ConfigurationSection enchants = tradeSection.getConfigurationSection("enchantments");
                     if (enchants != null) {
@@ -84,7 +84,7 @@ public class TradeManager {
                     }
                 }
 
-                // Handle custom item metadata
+                
                 ConfigurationSection metadata = tradeSection.getConfigurationSection("metadata");
                 if (metadata != null) {
                     ItemMeta meta = result.getItemMeta();
@@ -97,7 +97,7 @@ public class TradeManager {
                     result.setItemMeta(meta);
                 }
 
-                // Create recipe
+                
                 MerchantRecipe recipe = new MerchantRecipe(
                     result,
                     0,
@@ -107,7 +107,7 @@ public class TradeManager {
                     Float.parseFloat(tradeSection.getString("price-multiplier", "0.05"))
                 );
 
-                // Add ingredients
+                
                 List<String> ingredients = tradeSection.getStringList("ingredients");
                 for (String ingredient : ingredients) {
                     String[] parts = ingredient.split(":");

@@ -25,7 +25,7 @@ public class TradeCommand implements CommandExecutor {
             return true;
         }
 
-        // Open trade configuration menu
+        
         new TradeMenu(plugin).openMenu(player);
         return true;
     }
