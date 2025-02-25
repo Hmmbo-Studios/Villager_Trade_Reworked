@@ -152,19 +152,17 @@ public class TradeConfiguration {
         }
 
         if (material == Material.ENCHANTED_BOOK) {
-            
-            EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item.getItemMeta();
+            applyEnchantments(item, itemData);  // Directly modifies the ItemStack
+            ItemMeta meta = item.getItemMeta();
             if (meta != null) {
-                applyEnchantments(meta, itemData);
                 if (displayName != null) meta.setDisplayName(displayName);
                 if (!lore.isEmpty()) meta.setLore(lore);
                 item.setItemMeta(meta);
             }
         } else {
-            
+            applyEnchantments(item, itemData);  // Directly modifies the ItemStack
             ItemMeta meta = item.getItemMeta();
             if (meta != null) {
-                applyEnchantments(meta, itemData);
                 if (displayName != null) meta.setDisplayName(displayName);
                 if (!lore.isEmpty()) meta.setLore(lore);
                 item.setItemMeta(meta);
@@ -173,18 +171,107 @@ public class TradeConfiguration {
         return item;
     }
 
-    private void applyEnchantments(ItemMeta meta, Map<?, ?> itemData) {
+    private void applyEnchantments(ItemStack item, Map<?, ?> itemData) {
         if (itemData.containsKey("enchants")) {
             Map<?, ?> enchantments = (Map<?, ?>) itemData.get("enchants");
+
             for (Map.Entry<?, ?> entry : enchantments.entrySet()) {
                 Enchantment enchantment = Enchantment.getByKey(
                         NamespacedKey.minecraft(entry.getKey().toString().toLowerCase())
                 );
                 int lvl = (int) entry.getValue();
                 if (enchantment != null) {
-                    meta.addEnchant(enchantment, lvl, true);
+                    // Check if the item is an enchanted book
+                    if (item.getType() == Material.ENCHANTED_BOOK) {
+                        ItemMeta meta = item.getItemMeta();
+                        if (meta instanceof EnchantmentStorageMeta) {
+                            ((EnchantmentStorageMeta) meta).addStoredEnchant(enchantment, lvl, true);
+                            item.setItemMeta(meta);
+                        }
+                    } else {
+                        // Apply enchantment directly to the item for better anvil support
+                        item.addUnsafeEnchantment(enchantment, lvl);
+                    }
                 }
             }
         }
     }
+
+
+    public void saveConfig(String profession) {
+        File file = new File(plugin.getDataFolder(), "trades/" + profession.toLowerCase() + ".yml");
+        try {
+            tradeConfigs.get(profession.toLowerCase()).save(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Set<String> getProfessions() {
+        return tradeConfigs.keySet();
+    }
+
+    public Set<String> getTiers(String profession) {
+        YamlConfiguration config = tradeConfigs.get(profession.toLowerCase());
+        if (config == null || !config.contains("trades")) return new HashSet<>();
+
+        return config.getConfigurationSection("trades").getKeys(false);
+    }
+
+    public List<Map<?, ?>> getTrades(String profession, String tier) {
+        YamlConfiguration config = tradeConfigs.get(profession.toLowerCase());
+        if (config == null || !config.contains("trades." + tier)) return new ArrayList<>();
+
+        return config.getMapList("trades." + tier);
+    }
+
+    /**
+     * ✅ **Function to Add a Trade**
+     * @param profession - Villager profession (e.g., "armorer").
+     * @param tier - Trade tier (e.g., "1", "2", etc.).
+     * @param tradeData - Trade details in Map format.
+     */
+    public void addTrade(String profession, String tier, Map<String, Object> tradeData) {
+        YamlConfiguration config = tradeConfigs.get(profession.toLowerCase());
+        if (config == null) return;
+
+        List<Map<?, ?>> trades = getTrades(profession, tier);
+        trades.add(tradeData);
+
+        config.set("trades." + tier, trades);
+        saveConfig(profession);
+    }
+
+    /**
+     * ✅ **Function to Remove a Trade**
+     * @param profession - Villager profession.
+     * @param tier - Trade tier.
+     * @param tradeIndex - Index of the trade to remove.
+     */
+    public void removeTrade(String profession, String tier, int tradeIndex) {
+        YamlConfiguration config = tradeConfigs.get(profession.toLowerCase());
+        if (config == null) return;
+
+        List<Map<?, ?>> trades = getTrades(profession, tier);
+        if (tradeIndex < 0 || tradeIndex >= trades.size()) return;
+
+        trades.remove(tradeIndex);
+        config.set("trades." + tier, trades);
+        saveConfig(profession);
+    }
+
+    public void updateTrade(String profession, String tier, int tradeIndex, String field, Object newValue) {
+        YamlConfiguration config = tradeConfigs.get(profession.toLowerCase());
+        if (config == null) return;
+
+        List<Map<?, ?>> trades = getTrades(profession, tier);
+        if (tradeIndex < 0 || tradeIndex >= trades.size()) return;
+
+        Map<String, Object> trade = (Map<String, Object>) trades.get(tradeIndex);
+        trade.put(field, newValue);
+
+        config.set("trades." + tier, trades);
+        saveConfig(profession);
+    }
+
 }

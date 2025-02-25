@@ -1,5 +1,7 @@
-package com.example.customvillagertrades;
+package com.example.customvillagertrades.inventory;
 
+import com.example.customvillagertrades.CustomVillagerTrades;
+import com.example.customvillagertrades.TradeConfiguration;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

@@ -1,5 +1,6 @@
 package com.example.customvillagertrades;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
@@ -54,7 +55,6 @@ public class VillagerListener implements Listener {
 
     private void setCustomTrades(Villager villager) {
         String professionName = villager.getProfession().name().toLowerCase();
-
         
         if (villager.getProfession() == Villager.Profession.NITWIT ||
                 villager.getProfession() == Villager.Profession.NONE) {
@@ -64,9 +64,23 @@ public class VillagerListener implements Listener {
         List<MerchantRecipe> availableTrades = tradeConfig.getTradesForProfession(
                 professionName, villager.getVillagerLevel());
 
+
+
         if (!availableTrades.isEmpty()) {
             List<MerchantRecipe> selectedTrades = selectRandomTrades(availableTrades, 2);
-            villager.setRecipes(selectedTrades);
+            List<MerchantRecipe> trades = new ArrayList<>();
+
+            if( villager.getVillagerLevel() * 2 > villager.getRecipes().size()) {
+                if (villager.getVillagerLevel() != 1) {
+                    trades = new ArrayList(villager.getRecipes());
+                    trades.addAll(selectedTrades);
+                } else {
+                    trades.addAll(selectedTrades);
+                }
+                villager.setRecipes(trades);
+             }
+
+
         }
     }
 

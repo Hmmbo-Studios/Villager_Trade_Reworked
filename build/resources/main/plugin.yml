@@ -1,9 +1,9 @@
-name: CustomVillagerTrades
+name: Better_Villager_Trade
 version: '1.0-SNAPSHOT'
 main: com.example.customvillagertrades.CustomVillagerTrades
 api-version: '1.19'
 commands:
-  villagertrade:
-    description: Open villager trade configuration menu
+  bvt:
+    description: plugin help
     usage: /<command>
-    permission: customvillagertrades.admin
+    permission: bvt.admin

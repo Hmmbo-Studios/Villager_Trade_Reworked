@@ -1,5 +1,6 @@
-package com.example.customvillagertrades;
+package com.example.customvillagertrades.inventory;
 
+import com.example.customvillagertrades.CustomVillagerTrades;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
