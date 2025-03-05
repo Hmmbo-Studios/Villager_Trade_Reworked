@@ -1,5 +1,6 @@
 package com.example.customvillagertrades;
 
+import com.example.customvillagertrades.commands.CommandCompletor;
 import com.example.customvillagertrades.commands.LampCommands;
 import com.example.customvillagertrades.inventory.*;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,9 +19,10 @@ public class CustomVillagerTrades extends JavaPlugin {
 
 
         TradeConfiguration tradeConfig = new TradeConfiguration(this);
-
-        var lamp = BukkitLamp.builder(this).build();
-        lamp.register(new LampCommands(tradeManager,tradeConfig));
+        getCommand("bvt").setExecutor(new LampCommands(tradeManager, tradeConfig));
+        getCommand("bvt").setTabCompleter(new CommandCompletor());
+       // revxrsal.commands.Lamp<revxrsal.commands.bukkit.actor.BukkitCommandActor> lamp = BukkitLamp.builder(this).build();
+       // lamp.register(new LampCommands(tradeManager,tradeConfig));
 
 
 

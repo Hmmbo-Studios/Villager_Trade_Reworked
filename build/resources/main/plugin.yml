@@ -1,7 +1,7 @@
 name: Better_Villager_Trade
-version: '1.0-SNAPSHOT'
+version: '1.0.1-SNAPSHOT'
 main: com.example.customvillagertrades.CustomVillagerTrades
-api-version: '1.19'
+api-version: '1.16'
 commands:
   bvt:
     description: plugin help

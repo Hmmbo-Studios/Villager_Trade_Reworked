@@ -1,7 +1,7 @@
 name: Better_Villager_Trade
 version: '${version}'
 main: com.example.customvillagertrades.CustomVillagerTrades
-api-version: '1.19'
+api-version: '1.16'
 commands:
   bvt:
     description: plugin help
